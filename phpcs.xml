@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!-- @see https://pear.php.net/manual/en/package.php.php-codesniffer.annotated-ruleset.php -->
+<ruleset name= "Laravel PHPCS Rules">
+    <description>PHPCS ruleset for ProFlowers app.</description>
+
+    <file>tests</file>
+    <file>app</file>
+    <file>modules</file>
+
+    <!-- Show progress of the run -->
+    <arg value= "p"/>
+
+    <!-- Show sniff codes in all reports -->
+    <arg value= "s"/>
+
+    <arg value= "-ignore=*.blade.php"/>
+
+    <!-- Our base rule: set to PSR12 -->
+    <rule ref="PSR12">
+        <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceBefore"/>
+        <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceAfter"/>
+    </rule>
+
+    <rule ref="PSR2">
+        <exclude name="PSR1.Methods.CamelCapsMethodName"/>
+    </rule>
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="180"/>
+            <property name="absoluteLineLimit" value="150"/>
+        </properties>
+    </rule>
+
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>./tests/*</exclude-pattern>
+    </rule>
+
+    <rule ref="Internal.NoCodeFound">
+        <exclude-pattern>*.blade.php</exclude-pattern>
+        <exclude-pattern>*.vue</exclude-pattern>
+    </rule>
+
+</ruleset>
